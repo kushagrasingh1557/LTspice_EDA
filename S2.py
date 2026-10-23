@@ -3,9 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-# ==========================================
 # 1. READ LTSPICE DATA
-# ==========================================
 
 data_50mV = pd.read_csv("S2_50mv.csv")
 data_1p1V = pd.read_csv("S2_11v.csv")
@@ -26,10 +24,7 @@ VGS_50, IDS_50 = VGS_50[order_50], IDS_50[order_50]
 order_11 = np.argsort(VGS_11)
 VGS_11, IDS_11 = VGS_11[order_11], IDS_11[order_11]
 
-
-# ==========================================
 # 2. TRANSFER CURVE - LINEAR AXES
-# ==========================================
 
 plt.figure(figsize=(8, 5))
 
@@ -45,10 +40,7 @@ plt.tight_layout()
 plt.savefig("S2_transfer_linear.png", dpi=300)
 plt.show()
 
-
-# ==========================================
 # 3. TRANSFER CURVE - LOG Y-AXIS
-# ==========================================
 
 plt.figure(figsize=(8, 5))
 
@@ -66,11 +58,8 @@ plt.tight_layout()
 plt.savefig("S2_transfer_log.png", dpi=300)
 plt.show()
 
-
-# ==========================================
 # 4. EXTRACT VTH USING MAXIMUM-gm TANGENT
 # Use VDS = 50 mV
-# ==========================================
 
 gm = np.gradient(IDS_50, VGS_50)
 
@@ -87,19 +76,13 @@ Vth = Vg_maxgm - Id_maxgm / gm_max
 Vg_tangent = np.linspace(Vth, Vg_maxgm, 100)
 Id_tangent = gm_max * (Vg_tangent - Vth)
 
-
-# ==========================================
 # 5. EXTRACT ION AND IOFF
 # Use VDS = 1.1 V
-# ==========================================
 
 Ion = np.interp(1.1, VGS_11, IDS_11)
 Ioff = np.interp(0.0, VGS_11, IDS_11)
 
-
-# ==========================================
 # 6. PLOT VTH TANGENT
-# ==========================================
 
 plt.figure(figsize=(8, 5))
 
@@ -126,10 +109,7 @@ plt.tight_layout()
 plt.savefig("S2_Vth_extraction.png", dpi=300)
 plt.show()
 
-
-# ==========================================
 # 7. PRINT ONLY REQUIRED RESULTS
-# ==========================================
 
 print("\n===== S2 RESULTS =====")
 print(f"VTH = {Vth:.4f} V")
