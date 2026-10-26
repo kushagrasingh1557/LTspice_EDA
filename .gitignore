@@ -1,0 +1,36 @@
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# VS Code workspace settings
+.vscode/
+
+# Python build files
+build/
+dist/
+*.egg-info/
+
+# LTspice simulation outputs
+*.raw
+*.log
+*.net
+*.op.raw
+*.fft
+*.plt
+*.bak
+
+# Temporary files
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
