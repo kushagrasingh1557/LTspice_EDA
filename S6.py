@@ -16,7 +16,9 @@ tcad_transfer = tcad_transfer[
     tcad_transfer["gate OuterVoltage"] <= 1.1
 ]
 
+# ==============================
 # 1. TRANSFER CHARACTERISTIC
+# ==============================
 
 plt.figure(figsize=(8, 5))
 
@@ -44,7 +46,9 @@ plt.tight_layout()
 plt.savefig("S6_transfer_overlay.png", dpi=300)
 plt.show()
 
+# ==============================
 # 2. OUTPUT CHARACTERISTIC
+# ==============================
 
 plt.figure(figsize=(8, 5))
 
